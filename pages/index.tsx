@@ -10,6 +10,9 @@ export default function Home() {
         <Link href="/demo/spherical-word-cloud">SphericalWordCloud</Link>
       </li>
       <li>
+        <Link href="/demo/confetti">Confetti</Link>
+      </li>
+      <li>
         <Link href="/demo/holographic-interactions">
           HolographicInteractions
         </Link>
