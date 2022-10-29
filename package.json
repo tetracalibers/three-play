@@ -12,6 +12,7 @@
     "@react-three/drei": "^9.38.1",
     "@react-three/fiber": "^8.8.10",
     "next": "13.0.0",
+    "random-words": "^1.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "^5.3.6",

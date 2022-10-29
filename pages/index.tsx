@@ -7,6 +7,9 @@ export default function Home() {
         <Link href="/demo/basic-box">BasicBox</Link>
       </li>
       <li>
+        <Link href="/demo/spherical-word-cloud">SphericalWordCloud</Link>
+      </li>
+      <li>
         <Link href="/demo/holographic-interactions">
           HolographicInteractions
         </Link>
