@@ -1,15 +1,16 @@
-import styled from "styled-components"
-import { BasicDemo } from "../examples/react-three-fiber/basic/BasicDemo"
-
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-`
+import Link from "next/link"
 
 export default function Home() {
   return (
-    <Container>
-      <BasicDemo />
-    </Container>
+    <ul>
+      <li>
+        <Link href="/demo/basic-box">BasicBox</Link>
+      </li>
+      <li>
+        <Link href="/demo/holographic-interactions">
+          HolographicInteractions
+        </Link>
+      </li>
+    </ul>
   )
 }
