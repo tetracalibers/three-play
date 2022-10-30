@@ -13,6 +13,9 @@ export default function Home() {
         <Link href="/demo/springy-boxes">SpringyBoxes</Link>
       </li>
       <li>
+        <Link href="/demo/ballpit">Ballpit</Link>
+      </li>
+      <li>
         <Link href="/demo/confetti">Confetti</Link>
       </li>
       <li>
