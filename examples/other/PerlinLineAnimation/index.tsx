@@ -3,26 +3,16 @@ import { Canvas, useFrame } from "@react-three/fiber"
 import * as THREE from "three"
 import Simplex from "perlin-simplex"
 import { useRef } from "react"
-import { Group } from "three"
 
 const simplex = new Simplex()
 
 const LINE_COUNT = 50
-const LINE_LENGTH = 10
-const SEGMENT_COUNT = 100
+const LINE_LENGTH = 100
+const SEGMENT_COUNT = 500
 const AMPLITUDE = 5
 
 const lineLoop = [...new Array(LINE_COUNT)].map((_, i) => i)
 const segmentLoop = [...new Array(SEGMENT_COUNT)].map((_, j) => j)
-
-const points = lineLoop.map(i =>
-  segmentLoop.map(j => {
-    const x = (LINE_LENGTH / SEGMENT_COUNT) * j - LINE_LENGTH / 2
-    const y = 0
-    const z = i * 0.3 - (LINE_COUNT * 0.3) / 2
-    return new THREE.Vector3(x, y, z)
-  }),
-)
 
 const colors = lineLoop.map(i => {
   const h = Math.round((i / LINE_COUNT) * 360)
@@ -32,47 +22,39 @@ const colors = lineLoop.map(i => {
   return color
 })
 
-const geometies = lineLoop.map(i =>
-  new THREE.BufferGeometry().setFromPoints(points[i]),
-)
+interface PerlinLineProps {
+  color: THREE.Color
+  lineIdx: number
+}
 
-const Particles = () => {
-  const ref = useRef<Group>(null)
+const PerlinLine = ({ color, lineIdx: i }: PerlinLineProps) => {
+  const ref = useRef<SVGLineElement>(null)
 
-  useFrame(_ => {
-    for (const i of lineLoop) {
-      const time = Date.now() / 4000
-      const positions = geometies[i].getAttribute("position")
-
-      for (const j of segmentLoop) {
-        const x = (LINE_LENGTH / SEGMENT_COUNT) * j - LINE_LENGTH / 2
-        const y = AMPLITUDE * simplex.noise(i / (50 + i), i / 50 + time)
-        const z = i * 0.3 - (LINE_COUNT * 0.3) / 2
-        positions.setX(j, x)
-        positions.setY(j, y)
-        positions.setZ(j, z)
-      }
-    }
+  useFrame(() => {
+    const time = Date.now() / 4000
+    if (!ref.current) return
+    const newPoints = segmentLoop.map(j => {
+      const x = (LINE_LENGTH / SEGMENT_COUNT) * j - LINE_LENGTH / 2
+      const y = AMPLITUDE * simplex.noise(j / (50 + i), i / 50 + time)
+      const z = i * 0.1 - (LINE_COUNT * 0.1) / 2
+      return new THREE.Vector3(x, y, z)
+    })
+    ref.current.geometry.setFromPoints(newPoints)
   })
 
   return (
-    <group ref={ref}>
-      {geometies.map((line, i) => (
-        <line key={i} geometry={line}>
-          {/* <bufferGeometry>
-            <bufferAttribute
-              attach="attributes-position"
-              count={points[i].length / 3}
-              itemSize={3}
-              array={points[i]}
-            />
-          </bufferGeometry> */}
-          <lineBasicMaterial
-            attach="material"
-            color={colors[i]}
-            linewidth={0.1}
-          />
-        </line>
+    <line ref={ref}>
+      <bufferGeometry />
+      <lineBasicMaterial attach="material" color={color} linewidth={0.1} />
+    </line>
+  )
+}
+
+const Particles = () => {
+  return (
+    <group>
+      {colors.map((color, i) => (
+        <PerlinLine color={color} lineIdx={i} key={i} />
       ))}
     </group>
   )
@@ -80,7 +62,8 @@ const Particles = () => {
 
 export const PerlinLineAnimation = () => {
   return (
-    <Canvas dpr={2}>
+    <Canvas dpr={2} linear>
+      <color attach="background" args={["#525E75"]} />
       <OrbitControls />
       <Particles />
     </Canvas>
