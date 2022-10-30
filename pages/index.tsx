@@ -16,6 +16,9 @@ export default function Home() {
         <Link href="/demo/ballpit">Ballpit</Link>
       </li>
       <li>
+        <Link href="/demo/perlin-line-animation">PerlinLineAnimation</Link>
+      </li>
+      <li>
         <Link href="/demo/confetti">Confetti</Link>
       </li>
       <li>

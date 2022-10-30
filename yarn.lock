@@ -1958,6 +1958,11 @@ path-type@^4.0.0:
   resolved "https://registry.yarnpkg.com/path-type/-/path-type-4.0.0.tgz#84ed01c0a7ba380afe09d90a8c180dcd9d03043b"
   integrity sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
 
+perlin-simplex@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/perlin-simplex/-/perlin-simplex-0.0.3.tgz#4c2a6aa52ab93b980daa9e2a95bd4dadf7e9f81c"
+  integrity sha512-fhLYrvCVxYlvStYUCZ2z0pWkrJX+PcfRvtTRbvegN3GxIEiOPmBbFFr0Uk2MJxqmjVrgnHuFQBcmyDQJ/kMp/w==
+
 picocolors@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.0.tgz#cb5bdc74ff3f51892236eaf79d68bc44564ab81c"
