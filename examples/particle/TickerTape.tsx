@@ -24,6 +24,12 @@ const Paper = ({ color }: PaperProps) => {
     return new THREE.Vector3(x, y, z)
   }, [viewport])
 
+  const size = useMemo(() => {
+    const w = PAPER_SCALE + Math.random() * PAPER_SCALE
+    const h = PAPER_SCALE + Math.random() * PAPER_SCALE * 1.5
+    return { w, h }
+  }, [])
+
   useFrame(() => {
     if (!ref.current) return
     ref.current.rotation.x += Math.random() * 0.1
@@ -33,7 +39,7 @@ const Paper = ({ color }: PaperProps) => {
 
   return (
     <mesh position={position} ref={ref}>
-      <planeGeometry args={[PAPER_SCALE, PAPER_SCALE]} />
+      <planeGeometry args={[size.w, size.h]} />
       <meshBasicMaterial color={color} side={THREE.DoubleSide} transparent />
     </mesh>
   )
@@ -77,7 +83,7 @@ export const TickerTape = () => {
       }}
     >
       <directionalLight color="white" intensity={1} position={[0, 0, 1000]} />
-      <color attach="background" args={["#CDFCF6"]} />
+      <color attach="background" args={["#F8F8FF"]} />
       <Particle />
       <CameraRotation />
     </Canvas>
