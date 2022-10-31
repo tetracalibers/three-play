@@ -2,13 +2,18 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import * as THREE from "three"
 import { useMemo, useRef } from "react"
 import { Mesh } from "three"
+import randomColor from "randomcolor"
 
 const PAPER_COUNT = 600
 const PAPER_SCALE = 6
 
 const paperCounter = [...new Array(PAPER_COUNT)].map((_, i) => i)
 
-const Paper = () => {
+interface PaperProps {
+  color: string
+}
+
+const Paper = ({ color }: PaperProps) => {
   const { viewport } = useThree()
   const ref = useRef<Mesh>(null)
 
@@ -18,11 +23,6 @@ const Paper = () => {
     const z = viewport.width * (Math.random() - 0.5)
     return new THREE.Vector3(x, y, z)
   }, [viewport])
-
-  const color = useMemo(() => {
-    const hex = "0x" + Math.floor(Math.random() * 16777215).toString(16)
-    return Number(hex)
-  }, [])
 
   useFrame(() => {
     if (!ref.current) return
@@ -40,10 +40,14 @@ const Paper = () => {
 }
 
 const Particle = () => {
+  const colors = useMemo(() => {
+    return randomColor({ luminosity: "light", count: PAPER_COUNT })
+  }, [])
+
   return (
     <>
       {paperCounter.map(i => (
-        <Paper key={i} />
+        <Paper key={i} color={colors[i]} />
       ))}
     </>
   )
@@ -73,7 +77,7 @@ export const TickerTape = () => {
       }}
     >
       <directionalLight color="white" intensity={1} position={[0, 0, 1000]} />
-      <color attach="background" args={["#525E75"]} />
+      <color attach="background" args={["#CDFCF6"]} />
       <Particle />
       <CameraRotation />
     </Canvas>
