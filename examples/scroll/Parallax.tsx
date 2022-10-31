@@ -24,6 +24,8 @@ const Title = styled.div`
   margin: 0;
   padding: 0;
   user-select: none;
+  color: #4a5368;
+  text-shadow: 4px 4px 0px #d5d5d5, 7px 7px 0px rgba(0, 0, 0, 0.2);
 `
 
 const Images = () => {
@@ -46,40 +48,24 @@ const Images = () => {
 
   return (
     <group ref={ref}>
-      <Image
-        position={[-2, 0, 0]}
-        scale={[4, h]}
-        url="/images/parallax-scroll/img1.jpg"
-      />
-      <Image
-        position={[2, 0, 1]}
-        scale={3}
-        url="/images/parallax-scroll/img6.jpg"
-      />
-      <Image
-        position={[-2.3, -h, 2]}
-        scale={[1, 3]}
-        url="/images/parallax-scroll/trip2.jpg"
-      />
+      <Image position={[-2, 0, 0]} scale={[4, h]} url="/images/interior1.jpg" />
+      <Image position={[2, 0, 1]} scale={3} url="/images/interior6.jpg" />
+      <Image position={[-2.3, -h, 2]} scale={[1, 3]} url="/images/trip2.jpg" />
       <Image
         position={[-0.6, -h, 3]}
         scale={[1, 2]}
-        url="/images/parallax-scroll/img8.jpg"
+        url="/images/interior8.jpg"
       />
-      <Image
-        position={[0.75, -h, 3.5]}
-        scale={1.5}
-        url="/images/parallax-scroll/trip4.jpg"
-      />
+      <Image position={[0.75, -h, 3.5]} scale={1.5} url="/images/trip4.jpg" />
       <Image
         position={[0, -h * 1.5, 2.5]}
         scale={[1.5, 3]}
-        url="/images/parallax-scroll/img3.jpg"
+        url="/images/interior3.jpg"
       />
       <Image
         position={[0, -h * 2 - h / 4, 0]}
         scale={[w, h / 2]}
-        url="/images/parallax-scroll/img7.jpg"
+        url="/images/interior7.jpg"
       />
     </group>
   )
