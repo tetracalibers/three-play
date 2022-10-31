@@ -22,6 +22,9 @@ export default function Home() {
         <Link href="/demo/ticker-tape">TickerTape</Link>
       </li>
       <li>
+        <Link href="/demo/bubble-particle">BubbleParticle</Link>
+      </li>
+      <li>
         <Link href="/demo/confetti">Confetti</Link>
       </li>
       <li>
