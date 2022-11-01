@@ -25,7 +25,10 @@ export default function Home() {
         <Link href="/demo/bubble-particle">BubbleParticle</Link>
       </li>
       <li>
-        <Link href="/demo/parallax-scroll">ParallaxScroll</Link>
+        <Link href="/demo/simple-parallax">SimpleParallax</Link>
+      </li>
+      <li>
+        <Link href="/demo/parallax-scroll">Parallax</Link>
       </li>
       {/* <li>
         <Link href="/demo/confetti">Confetti</Link>

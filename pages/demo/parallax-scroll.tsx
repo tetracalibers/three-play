@@ -1,5 +1,5 @@
 import { Full } from "../../components/Full"
-import { ParallaxScroll } from "../../examples/scroll/parallax"
+import { ParallaxScroll } from "../../examples/scroll/Parallax"
 
 const ParallaxScrollDemoPage = () => {
   return (
